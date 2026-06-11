@@ -37,17 +37,17 @@ community remasters — all from a profile directory that is fully version-contr
 `ghostremaster` uses a **diff-based capture model** rather than a noisy full clone:
 
 ```
- ┌────────────┐    extract    ┌──────────────┐
+ ┌────────────┐    extract     ┌──────────────┐
  │ Official   │ ────────────▶ │ BASE rootfs  │
- │ GhostBSD   │               │ (read-only)  │
- │ ISO        │               └──────┬───────┘
- └────────────┘                      │  diff (ADR-0011)
+ │ GhostBSD   │                │ (read-only)  │
+ │ ISO        │                └──────┬───────┘
+ └────────────┘                       │  diff (ADR-0011)
                                       ▼
- ┌────────────┐    capture    ┌──────────────┐    assemble    ┌──────────────┐
+ ┌────────────┐    capture     ┌──────────────┐    assemble     ┌──────────────┐
  │ LIVE       │ ────────────▶ │ profile/     │ ─────────────▶ │ Bootable ISO │
- │ customized │               │ (source of   │   (ADR-0012)   │ (BIOS+UEFI)  │
- │ system     │               │  truth)      │                └──────────────┘
- └────────────┘               └──────────────┘
+ │ customized │                │ (source of   │   (ADR-0012)    │ (BIOS+UEFI)  │
+ │ system     │                │  truth)      │                 └──────────────┘
+ └────────────┘                └──────────────┘
 ```
 
 The captured **profile** is the single source of truth for reconstruction
